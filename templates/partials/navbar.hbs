@@ -14,18 +14,24 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link text-light" href="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="/register">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="/secret">Secret</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="/logout">Logout</a>
-      </li>
+      {{#if user}}
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/">{{user.first_name}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/secret">Secret</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/logout">Logout</a>
+        </li>
+      {{else}}
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/login">Login</a>
+        </li>
+        {{! <li class="nav-item">
+          <a class="nav-link text-light" href="/register">Register</a>
+        </li> }}
+      {{/if}}
     </ul>
   </div>
 </nav>

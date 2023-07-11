@@ -24,8 +24,8 @@ app.use(cookieParser());
 // console.log(process.env.SECRETE_KEY);
 
 // Rendering the home page
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", auth, (req, res) => {
+  res.render("index", { user: req.user });
 });
 
 // Rendering the register and login pages
@@ -88,9 +88,10 @@ app.post("/login", async (req, res) => {
     );
 
     // Adding a cookie
-    const expirationDate = new Date();
-    expirationDate.setTime(expirationDate.getTime() + 10 * 60 * 1000); // Set expiration 3 minutes from now
-    res.cookie("jwt", token, { expires: expirationDate });
+    // const expirationDate = new Date();
+    // expirationDate.setTime(expirationDate.getTime() + 10 * 60 * 1000); // Set expiration 3 minutes from now
+    // res.cookie("jwt", token, { expires: expirationDate });
+    res.cookie("jwt", token);
 
     if (matchPassword) {
       res.status(201).redirect("/");
@@ -124,7 +125,7 @@ app.get("/logout", auth, async (req, res) => {
 });
 
 app.get("/secret", auth, (req, res) => {
-  res.render("secret");
+  res.render("secret", { user: req.user });
   console.log(`a verified user has accessed this secret section.`);
 });
 

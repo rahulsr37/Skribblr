@@ -64,4 +64,10 @@ form{
 	
   }
   
+
+  .navbar{
+	/* border: 1px solid rgb(0, 132, 255); */
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+  }
   

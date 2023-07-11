@@ -6,6 +6,7 @@ function createPost(content) {
   postElement.innerHTML = `
       <div class="card-body">
         <p class="card-text">${content}</p>
+        <p class="skribblr-name">r</p>
       </div>
     `;
 
